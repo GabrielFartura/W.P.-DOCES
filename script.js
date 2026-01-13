@@ -1,85 +1,54 @@
-let resumoPedido = "";
-let totalPedido = 0;
-
 function abrirPagamento() {
-    gerarResumo();
     document.getElementById("modalPagamento").style.display = "block";
 }
 
 function confirmarPagamento() {
+    const nome = document.getElementById("nome").value;
+    const endereco = document.getElementById("endereco").value;
     const pagamento = document.querySelector('input[name="pagamento"]:checked');
 
-    if (!pagamento) {
-        alert("Selecione a forma de pagamento");
+    if (!nome || !endereco || !pagamento) {
+        alert("Preencha todos os dados!");
         return;
     }
 
-    const formaPagamento = pagamento.value;
+    let resumo = `🍬 *Pedido W&P Doces*\n👤 ${nome}\n📍 ${endereco}\n\n`;
+    let total = 0;
 
-    enviarWhatsApp(formaPagamento);
-    gerarPlanilha(formaPagamento);
-
-    document.getElementById("modalPagamento").style.display = "none";
-}
-
-function gerarResumo() {
-    const precoBala = 2;
-    const precoOutros = 6;
-
-    const sabores = [
-        { nome: "Coco", id: "coco" },
-        { nome: "Morango", id: "morango" },
-        { nome: "Limão", id: "limao" },
-        { nome: "Maracujá", id: "maracuja" },
-        { nome: "Caipirinha", id: "caipirinha" },
-        { nome: "Nutella", id: "nutella" }
+    const itens = [
+        ["Coco", "coco"], ["Morango", "morango"], ["Limão", "limao"],
+        ["Maracujá", "maracuja"], ["Caipirinha", "caipirinha"], ["Nutella", "nutella"]
     ];
 
-    resumoPedido = "🍬 *Pedido W.E.P Doces* 🍫\n";
-    totalPedido = 0;
-
-    sabores.forEach(sabor => {
-        const qtd = parseInt(document.getElementById(sabor.id).value) || 0;
-        if (qtd > 0) {
-            resumoPedido += `Balas ${sabor.nome}: ${qtd}\n`;
-            totalPedido += qtd * precoBala;
+    itens.forEach(i => {
+        const q = parseInt(document.getElementById(i[1]).value) || 0;
+        if (q > 0) {
+            resumo += `Balas ${i[0]}: ${q}\n`;
+            total += q * 2;
         }
     });
 
     const brownie = parseInt(document.getElementById("brownie").value) || 0;
     const palha = parseInt(document.getElementById("palha").value) || 0;
 
-    if (brownie > 0) {
-        resumoPedido += `Brownie: ${brownie}\n`;
-        totalPedido += brownie * precoOutros;
-    }
+    if (brownie) { resumo += `Brownie: ${brownie}\n`; total += brownie * 6; }
+    if (palha) { resumo += `Palha Italiana: ${palha}\n`; total += palha * 6; }
 
-    if (palha > 0) {
-        resumoPedido += `Palha Italiana: ${palha}\n`;
-        totalPedido += palha * precoOutros;
-    }
+    resumo += `\n💳 Pagamento: ${pagamento.value}\n💰 Total: R$ ${total.toFixed(2)}`;
 
-    resumoPedido += `\n💰 Total: R$ ${totalPedido.toFixed(2)}`;
-}
-
-function enviarWhatsApp(pagamento) {
-    const mensagem = `${resumoPedido}\n\n💳 Pagamento: ${pagamento}`;
-    const numero = "5521976742777"; // WhatsApp com DDI
-    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+    const url = `https://wa.me/5521976742777?text=${encodeURIComponent(resumo)}`;
     window.open(url, "_blank");
+
+    gerarCSV(nome, endereco, pagamento.value, total);
 }
 
-function gerarPlanilha(pagamento) {
-    const data = new Date().toLocaleString("pt-BR");
-
-    const csv = `
-Data,Pedido,Total,Pagamento
-"${data}","${resumoPedido.replace(/\n/g, " | ")}","${totalPedido.toFixed(2)}","${pagamento}"
-`;
+function gerarCSV(nome, endereco, pagamento, total) {
+    const csv = `Nome,Endereço,Pagamento,Total
+"${nome}","${endereco}","${pagamento}","${total.toFixed(2)}"`;
 
     const blob = new Blob([csv], { type: "text/csv" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "pedidos_w.e.p_doces.csv";
-    link.click();
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "pedidos_wp_doces.csv";
+    a.click();
 }
