@@ -17,24 +17,36 @@
 <div class="produto">
     <h2>🍬 Balas de Coco (R$ 2,00)</h2>
 
-    <div class="sabor"><label>Coco</label><input type="number" id="coco"></div>
-    <div class="sabor"><label>Morango</label><input type="number" id="morango"></div>
-    <div class="sabor"><label>Limão</label><input type="number" id="limao"></div>
-    <div class="sabor"><label>Maracujá</label><input type="number" id="maracuja"></div>
-    <div class="sabor"><label>Caipirinha</label><input type="number" id="caipirinha"></div>
-    <div class="sabor"><label>Nutella</label><input type="number" id="nutella"></div>
+    <div class="sabor"><label>Coco</label><input type="number" id="coco" oninput="atualizarCarrinho()"></div>
+    <div class="sabor"><label>Morango</label><input type="number" id="morango" oninput="atualizarCarrinho()"></div>
+    <div class="sabor"><label>Limão</label><input type="number" id="limao" oninput="atualizarCarrinho()"></div>
+    <div class="sabor"><label>Maracujá</label><input type="number" id="maracuja" oninput="atualizarCarrinho()"></div>
+    <div class="sabor"><label>Caipirinha</label><input type="number" id="caipirinha" oninput="atualizarCarrinho()"></div>
+    <div class="sabor"><label>Nutella</label><input type="number" id="nutella" oninput="atualizarCarrinho()"></div>
 </div>
 
 <div class="produto">
     <h2>🍫 Brownie (R$ 6,00)</h2>
-    <input type="number" id="brownie">
+    <input type="number" id="brownie" oninput="atualizarCarrinho()">
 </div>
 
 <div class="produto">
     <h2>🍰 Palha Italiana (R$ 6,00)</h2>
-    <input type="number" id="palha">
+    <input type="number" id="palha" oninput="atualizarCarrinho()">
 </div>
 
+<div class="produto carrinho">
+    <h2>🛒 Carrinho</h2>
+
+    <p id="resumoBalas">Balas: R$ 0,00</p>
+    <p id="resumoBrownie">Brownie: R$ 0,00</p>
+    <p id="resumoPalha">Palha Italiana: R$ 0,00</p>
+
+    <hr>
+
+    <h3 id="totalGeral">Total: R$ 0,00</h3>
+</div>
+    
 <div class="produto">
     <h2>👤 Dados do Cliente</h2>
     <input type="text" id="nome" placeholder="Nome completo">
