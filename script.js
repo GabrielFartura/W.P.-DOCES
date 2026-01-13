@@ -80,3 +80,41 @@ function gerarCSV(nome, endereco, pagamento, total) {
     a.download = "pedidos_wp_doces.csv";
     a.click();
 }
+
+const precoBala = 2;
+const precoOutros = 6;
+
+// Atualiza o carrinho em tempo real
+function atualizarCarrinho() {
+    let totalBalas = 0;
+
+    const sabores = [
+        "coco", "morango", "limao",
+        "maracuja", "caipirinha", "nutella"
+    ];
+
+    sabores.forEach(id => {
+        const qtd = parseInt(document.getElementById(id).value) || 0;
+        totalBalas += qtd * precoBala;
+    });
+
+    const brownie = parseInt(document.getElementById("brownie").value) || 0;
+    const palha = parseInt(document.getElementById("palha").value) || 0;
+
+    const totalBrownie = brownie * precoOutros;
+    const totalPalha = palha * precoOutros;
+
+    const totalGeral = totalBalas + totalBrownie + totalPalha;
+
+    document.getElementById("resumoBalas").innerText =
+        `Balas: R$ ${totalBalas.toFixed(2)}`;
+
+    document.getElementById("resumoBrownie").innerText =
+        `Brownie: R$ ${totalBrownie.toFixed(2)}`;
+
+    document.getElementById("resumoPalha").innerText =
+        `Palha Italiana: R$ ${totalPalha.toFixed(2)}`;
+
+    document.getElementById("totalGeral").innerText =
+        `Total: R$ ${totalGeral.toFixed(2)}`;
+}
