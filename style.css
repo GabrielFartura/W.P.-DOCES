@@ -197,35 +197,51 @@ button {
     font-size: 16px;
 }
 
+.btn-limpar {
+    background: #eee;
+    color: #333;
+    width: 100%;
+    margin-top: 12px;
+    padding: 14px;
+    border-radius: 25px;
+    font-size: 15px;
+}
+
+
 .quantidade {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-top: 8px;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
 }
 
 .quantidade button {
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
     border: none;
-    font-size: 22px;
+    font-size: 26px;
     font-weight: bold;
     background: #d63384;
-    color: white;
+    color: #fff;
     cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transition: transform 0.15s ease, background 0.2s ease;
 }
 
 .quantidade button:active {
-    transform: scale(0.95);
+    transform: scale(0.9);
+    background: #b52a6f;
 }
 
 .quantidade input {
-    width: 60px;
+    width: 64px;
     text-align: center;
     font-size: 16px;
-    padding: 8px;
-    border-radius: 10px;
+    padding: 10px;
+    border-radius: 12px;
     border: 1px solid #ccc;
 }
-
