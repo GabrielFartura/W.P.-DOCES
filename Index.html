@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>W.E.P Doces</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🍬 W.E.P Doces 🍫</h1>
+
+<div class="produto">
+    <h2>Balas de Coco (R$ 2,00)</h2>
+
+    <label>Sabor:</label>
+    <select id="sabor">
+        <option>Coco (Tradicional)</option>
+        <option>Morango</option>
+        <option>Limão</option>
+        <option>Maracujá</option>
+        <option>Caipirinha</option>
+        <option>Nutella</option>
+    </select>
+
+    <label>Quantidade:</label>
+    <input type="number" id="qtdBala" min="1">
+
+    <button onclick="adicionarBala()">Adicionar</button>
+</div>
+
+<div class="produto">
+    <h2>Brownie (R$ 6,00)</h2>
+    <input type="number" id="qtdBrownie" min="0" placeholder="Quantidade">
+</div>
+
+<div class="produto">
+    <h2>Palha Italiana (R$ 6,00)</h2>
+    <input type="number" id="qtdPalha" min="0" placeholder="Quantidade">
+</div>
+
+<button onclick="finalizarPedido()">Finalizar Pedido</button>
+
+<div class="resumo" id="resumo"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
 
