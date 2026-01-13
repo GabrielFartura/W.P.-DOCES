@@ -2,28 +2,48 @@ function abrirPagamento() {
     document.getElementById("modalPagamento").style.display = "block";
 }
 
+function fecharPagamento() {
+    document.getElementById("modalPagamento").style.display = "none";
+}
+
+function mostrarPagamento() {
+    const pagamento = document.querySelector('input[name="pagamento"]:checked').value;
+    const info = document.getElementById("infoPagamento");
+    const comprovante = document.getElementById("comprovante");
+
+    if (pagamento === "PIX") {
+        info.innerText = "📲 Faça o PIX para 21 976742777";
+        comprovante.style.display = "block";
+    } else {
+        info.innerText = "💵 Pagamento será feito no domicílio";
+        comprovante.style.display = "none";
+    }
+}
+
 function confirmarPagamento() {
     const nome = document.getElementById("nome").value;
     const endereco = document.getElementById("endereco").value;
-    const pagamento = document.querySelector('input[name="pagamento"]:checked');
+    const pagamentoSelecionado = document.querySelector('input[name="pagamento"]:checked');
 
-    if (!nome || !endereco || !pagamento) {
+    if (!nome || !endereco || !pagamentoSelecionado) {
         alert("Preencha todos os dados!");
         return;
     }
 
+    const pagamento = pagamentoSelecionado.value;
+
     let resumo = `🍬 *Pedido W&P Doces*\n👤 ${nome}\n📍 ${endereco}\n\n`;
     let total = 0;
 
-    const itens = [
-        ["Coco", "coco"], ["Morango", "morango"], ["Limão", "limao"],
-        ["Maracujá", "maracuja"], ["Caipirinha", "caipirinha"], ["Nutella", "nutella"]
+    const sabores = [
+        ["Coco","coco"],["Morango","morango"],["Limão","limao"],
+        ["Maracujá","maracuja"],["Caipirinha","caipirinha"],["Nutella","nutella"]
     ];
 
-    itens.forEach(i => {
-        const q = parseInt(document.getElementById(i[1]).value) || 0;
+    sabores.forEach(s => {
+        const q = parseInt(document.getElementById(s[1]).value) || 0;
         if (q > 0) {
-            resumo += `Balas ${i[0]}: ${q}\n`;
+            resumo += `Balas ${s[0]}: ${q}\n`;
             total += q * 2;
         }
     });
@@ -34,17 +54,23 @@ function confirmarPagamento() {
     if (brownie) { resumo += `Brownie: ${brownie}\n`; total += brownie * 6; }
     if (palha) { resumo += `Palha Italiana: ${palha}\n`; total += palha * 6; }
 
-    resumo += `\n💳 Pagamento: ${pagamento.value}\n💰 Total: R$ ${total.toFixed(2)}`;
+    resumo += `\n💳 Pagamento: ${pagamento}\n💰 Total: R$ ${total.toFixed(2)}`;
 
+    // WhatsApp
     const url = `https://wa.me/5521976742777?text=${encodeURIComponent(resumo)}`;
     window.open(url, "_blank");
 
-    gerarCSV(nome, endereco, pagamento.value, total);
+    // Planilha (CSV)
+    gerarCSV(nome, endereco, pagamento, total);
+
+    fecharPagamento();
 }
 
 function gerarCSV(nome, endereco, pagamento, total) {
-    const csv = `Nome,Endereço,Pagamento,Total
-"${nome}","${endereco}","${pagamento}","${total.toFixed(2)}"`;
+    const data = new Date().toLocaleString("pt-BR");
+
+    const csv = `Data,Nome,Endereço,Pagamento,Total
+"${data}","${nome}","${endereco}","${pagamento}","${total.toFixed(2)}"`;
 
     const blob = new Blob([csv], { type: "text/csv" });
     const a = document.createElement("a");
