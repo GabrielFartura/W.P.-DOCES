@@ -118,3 +118,17 @@ function atualizarCarrinho() {
     document.getElementById("totalGeral").innerText =
         `Total: R$ ${totalGeral.toFixed(2)}`;
 }
+
+function alterarQuantidade(id, valor) {
+    const input = document.getElementById(id);
+    let atual = parseInt(input.value) || 0;
+
+    atual += valor;
+
+    if (atual < 0) atual = 0;
+
+    input.value = atual;
+
+    atualizarCarrinho();
+}
+
