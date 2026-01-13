@@ -7,35 +7,54 @@
 </head>
 <body>
 
-<h1>🍬 W.E.P Doces 🍫</h1>
+<header>
+    <img src="logo.png" alt="Logo W.E.P Doces" class="logo">
+</header>
+
+<h1>🍬 Cardápio W.E.P Doces 🍫</h1>
 
 <div class="produto">
-    <h2>Balas de Coco (R$ 2,00)</h2>
+    <h2>Balas de Coco (R$ 2,00 cada)</h2>
 
-    <label>Sabor:</label>
-    <select id="sabor">
-        <option>Coco (Tradicional)</option>
-        <option>Morango</option>
-        <option>Limão</option>
-        <option>Maracujá</option>
-        <option>Caipirinha</option>
-        <option>Nutella</option>
-    </select>
+    <div class="sabor">
+        <label>Coco (Tradicional)</label>
+        <input type="number" min="0" id="coco">
+    </div>
 
-    <label>Quantidade:</label>
-    <input type="number" id="qtdBala" min="1">
+    <div class="sabor">
+        <label>Morango</label>
+        <input type="number" min="0" id="morango">
+    </div>
 
-    <button onclick="adicionarBala()">Adicionar</button>
+    <div class="sabor">
+        <label>Limão</label>
+        <input type="number" min="0" id="limao">
+    </div>
+
+    <div class="sabor">
+        <label>Maracujá</label>
+        <input type="number" min="0" id="maracuja">
+    </div>
+
+    <div class="sabor">
+        <label>Caipirinha</label>
+        <input type="number" min="0" id="caipirinha">
+    </div>
+
+    <div class="sabor">
+        <label>Nutella</label>
+        <input type="number" min="0" id="nutella">
+    </div>
 </div>
 
 <div class="produto">
     <h2>Brownie (R$ 6,00)</h2>
-    <input type="number" id="qtdBrownie" min="0" placeholder="Quantidade">
+    <input type="number" id="brownie" min="0">
 </div>
 
 <div class="produto">
     <h2>Palha Italiana (R$ 6,00)</h2>
-    <input type="number" id="qtdPalha" min="0" placeholder="Quantidade">
+    <input type="number" id="palha" min="0">
 </div>
 
 <button onclick="finalizarPedido()">Finalizar Pedido</button>
@@ -45,4 +64,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-
