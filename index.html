@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>W&P Doces</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -19,32 +19,32 @@
 
   <div class="quantidade"> Coco🥥
     <button type="button" onclick="alterarQuantidade('coco', -1)">−</button>
-    <input type="number" id="coco" value="0" readonly>
+    <input type="number" id="coco" value="0" min="0" oninput="validarInput('coco')">
     <button type="button" onclick="alterarQuantidade('coco', 1)">+</button>
 </div>
     <div class="quantidade"> Morango🍓
     <button type="button" onclick="alterarQuantidade('morango', -1)">−</button>
-    <input type="number" id="morango" value="0" readonly>
+    <input type="number" id="morango" value="0" min="0" oninput="validarInput('coco')">
     <button type="button" onclick="alterarQuantidade('morango', 1)">+</button>
 </div>
     <div class="quantidade"> Limão🍋‍🟩
     <button type="button" onclick="alterarQuantidade('limao', -1)">−</button>
-    <input type="number" id="limao" value="0" readonly>
+    <input type="number" id="limao" value="0" min="0" oninput="validarInput('coco')">
     <button type="button" onclick="alterarQuantidade('limao', 1)">+</button>
 </div>
     <div class="quantidade"> Maracujá
     <button type="button" onclick="alterarQuantidade('maracuja', -1)">−</button>
-    <input type="number" id="maracuja" value="0" readonly>
+    <input type="number" id="maracuja" value="0" min="0" oninput="validarInput('coco')">
     <button type="button" onclick="alterarQuantidade('maracuja', 1)">+</button>
 </div>
     <div class="quantidade"> Caipirinha🍸
     <button type="button" onclick="alterarQuantidade('caipirinha', -1)">−</button>
-    <input type="number" id="caipirinha" value="0" readonly>
+ <input type="number" id="caipirinha" value="0" min="0" oninput="validarInput('coco')">
     <button type="button" onclick="alterarQuantidade('caipirinha', 1)">+</button>
 </div>
     <div class="quantidade"> Nutella
     <button type="button" onclick="alterarQuantidade('nutella', -1)">−</button>
-    <input type="number" id="nutella" value="0" readonly>
+    <input type="number" id="nutella" value="0" min="0" oninput="validarInput('coco')">
     <button type="button" onclick="alterarQuantidade('nutella', 1)">+</button>
 </div>
 </div>
@@ -52,7 +52,7 @@
 <div class="produto" class="quantidade">
     <h2>🍫 Brownie (R$ 6,00)</h2>
     <button type="button" onclick="alterarQuantidade('brownie', -1)">−</button>
-    <input type="number" id="brownie" value="0" readonly>
+    <input type="number" id="brownie" value="0" min="0" oninput="validarInput('coco')">
     <button type="button" onclick="alterarQuantidade('brownie', 1)">+</button>
 </div>
 
@@ -60,7 +60,7 @@
     <h2>🍰 Palha Italiana (R$ 6,00)</h2>
     
     <button type="button" onclick="alterarQuantidade('palha', -1)">−</button>
-    <input type="number" id="palha" value="0" readonly>
+    <input type="number" id="palha" value="0" min="0" oninput="validarInput('coco')">
     <button type="button" onclick="alterarQuantidade('palha', 1)">+</button>
 </div>
 
@@ -74,6 +74,9 @@
     <hr>
 
     <h3 id="totalGeral">Total: R$ 0,00</h3>
+    <button onclick="limparCarrinho()" class="btn-limpar">
+    🗑️ Limpar Carrinho
+</button>
 </div>
     
 <div class="produto">
