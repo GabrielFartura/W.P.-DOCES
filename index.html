@@ -42,18 +42,27 @@
 
 <button class="btn-finalizar" onclick="abrirPagamento()">🛒 Finalizar Compra</button>
 
-<!-- MODAL -->
+<!-- MODAL DE PAGAMENTO -->
 <div id="modalPagamento" class="modal">
     <div class="modal-content">
         <h3>💳 Forma de Pagamento</h3>
 
-        <label><input type="radio" name="pagamento" value="PIX (21 976742777)"> PIX</label>
-        <label><input type="radio" name="pagamento" value="Cartão de Crédito"> Cartão de Crédito</label>
-        <label><input type="radio" name="pagamento" value="Cartão de Débito"> Cartão de Débito</label>
+        <label>
+            <input type="radio" name="pagamento" value="PIX" onclick="mostrarPagamento()">
+            PIX
+        </label>
 
-        <input type="file" id="comprovante">
+        <label>
+            <input type="radio" name="pagamento" value="Dinheiro" onclick="mostrarPagamento()">
+            Dinheiro
+        </label>
+
+        <p id="infoPagamento"></p>
+
+        <input type="file" id="comprovante" style="display:none;">
 
         <button class="btn-confirmar" onclick="confirmarPagamento()">✅ Confirmar Pagamento</button>
+        <button class="btn-sair" onclick="fecharPagamento()">❌ Sair</button>
     </div>
 </div>
 
