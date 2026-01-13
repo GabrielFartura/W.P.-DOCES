@@ -119,16 +119,47 @@ function atualizarCarrinho() {
         `Total: R$ ${totalGeral.toFixed(2)}`;
 }
 
+/* ===== CONTROLE DE QUANTIDADE ===== */
+
 function alterarQuantidade(id, valor) {
     const input = document.getElementById(id);
     let atual = parseInt(input.value) || 0;
 
     atual += valor;
-
     if (atual < 0) atual = 0;
 
     input.value = atual;
-
+    animarInput(input);
     atualizarCarrinho();
 }
 
+function validarInput(id) {
+    const input = document.getElementById(id);
+    let valor = parseInt(input.value);
+
+    if (isNaN(valor) || valor < 0) valor = 0;
+
+    input.value = valor;
+    atualizarCarrinho();
+}
+
+function animarInput(input) {
+    input.style.transform = "scale(1.1)";
+    setTimeout(() => {
+        input.style.transform = "scale(1)";
+    }, 150);
+}
+
+function limparCarrinho() {
+    const ids = [
+        "coco","morango","limao","maracuja","caipirinha","nutella",
+        "brownie","palha"
+    ];
+
+    ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = 0;
+    });
+
+    atualizarCarrinho();
+}
