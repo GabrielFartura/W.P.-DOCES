@@ -1,37 +1,42 @@
-let bala = {
-    sabor: "",
-    quantidade: 0,
-    preco: 2
-};
+function finalizarPedido() {
+    const precoBala = 2;
+    const precoOutros = 6;
 
-function adicionarBala() {
-    bala.sabor = document.getElementById("sabor").value;
-    bala.quantidade = parseInt(document.getElementById("qtdBala").value);
+    const sabores = [
+        { nome: "Coco", id: "coco" },
+        { nome: "Morango", id: "morango" },
+        { nome: "Limão", id: "limao" },
+        { nome: "Maracujá", id: "maracuja" },
+        { nome: "Caipirinha", id: "caipirinha" },
+        { nome: "Nutella", id: "nutella" }
+    ];
 
-    if (!bala.quantidade || bala.quantidade <= 0) {
-        alert("Informe a quantidade de balas.");
-        return;
+    let resumoHTML = "<h3>📝 Resumo do Pedido</h3>";
+    let total = 0;
+
+    sabores.forEach(sabor => {
+        const qtd = parseInt(document.getElementById(sabor.id).value) || 0;
+        if (qtd > 0) {
+            const subtotal = qtd * precoBala;
+            total += subtotal;
+            resumoHTML += `<p>Balas de ${sabor.nome}: ${qtd} → R$ ${subtotal.toFixed(2)}</p>`;
+        }
+    });
+
+    const brownie = parseInt(document.getElementById("brownie").value) || 0;
+    const palha = parseInt(document.getElementById("palha").value) || 0;
+
+    if (brownie > 0) {
+        total += brownie * precoOutros;
+        resumoHTML += `<p>Brownie: ${brownie} → R$ ${(brownie * precoOutros).toFixed(2)}</p>`;
     }
 
-    alert("Balas adicionadas!");
-}
+    if (palha > 0) {
+        total += palha * precoOutros;
+        resumoHTML += `<p>Palha Italiana: ${palha} → R$ ${(palha * precoOutros).toFixed(2)}</p>`;
+    }
 
-function finalizarPedido() {
-    const qtdBrownie = parseInt(document.getElementById("qtdBrownie").value) || 0;
-    const qtdPalha = parseInt(document.getElementById("qtdPalha").value) || 0;
+    resumoHTML += `<hr><h3>Total: R$ ${total.toFixed(2)}</h3>`;
 
-    const totalBalas = bala.quantidade * bala.preco;
-    const totalBrownie = qtdBrownie * 6;
-    const totalPalha = qtdPalha * 6;
-
-    const total = totalBalas + totalBrownie + totalPalha;
-
-    document.getElementById("resumo").innerHTML = `
-        <h3>📝 Resumo do Pedido</h3>
-        <p>Balas de Coco (${bala.sabor}): ${bala.quantidade} → R$ ${totalBalas.toFixed(2)}</p>
-        <p>Brownies: ${qtdBrownie} → R$ ${totalBrownie.toFixed(2)}</p>
-        <p>Palha Italiana: ${qtdPalha} → R$ ${totalPalha.toFixed(2)}</p>
-        <hr>
-        <h3>Total: R$ ${total.toFixed(2)}</h3>
-    `;
+    document.getElementById("resumo").innerHTML = resumoHTML;
 }
