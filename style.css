@@ -1,84 +1,85 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background: #fff5f8;
     padding: 20px;
 }
 
 header {
     text-align: center;
-    margin-bottom: 15px;
 }
 
 .logo {
-    max-width: 150px;
+    max-width: 140px;
 }
 
 h1 {
-    text-align: center;
     color: #d63384;
 }
 
 .produto {
-    background: #ffffff;
+    background: #fff;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .sabor {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-top: 8px;
+    margin: 6px 0;
+}
+
+input {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
 }
 
 .sabor input {
     width: 80px;
 }
 
-input {
-    padding: 8px;
-}
-
 button {
-    background: #d63384;
-    color: white;
+    border-radius: 30px;
     border: none;
-    padding: 12px;
-    width: 100%;
-    border-radius: 8px;
+    padding: 14px;
     font-size: 16px;
     cursor: pointer;
 }
 
-button:hover {
-    background: #b52a6f;
+.btn-finalizar {
+    background: linear-gradient(45deg, #ff5fa2, #d63384);
+    color: white;
+    width: 100%;
+    margin-top: 20px;
 }
 
-.resumo {
-    background: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    margin-top: 20px;
+.btn-confirmar {
+    background: #28a745;
+    color: white;
+    width: 100%;
+    margin-top: 15px;
 }
 
 .modal {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,.6);
 }
 
 .modal-content {
-    background: #fff;
-    max-width: 300px;
-    margin: 20% auto;
+    background: white;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 15px;
+    max-width: 320px;
+    margin: 25% auto;
 }
 
-.modal-content label {
-    display: block;
-    margin: 10px 0;
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #777;
 }
