@@ -9,7 +9,9 @@ header {
 }
 
 .logo {
-    max-width: 300px;
+    max-width: 220px;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 h1 {
@@ -67,14 +69,18 @@ button {
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,.6);
+    z-index: 9999;
 }
 
 .modal-content {
     background: white;
     padding: 20px;
     border-radius: 15px;
-    max-width: 320px;
-    margin: 25% auto;
+    max-width: 340px;
+    width: 90%;
+    margin: auto;
+    margin-top: 20vh;
+    position: relative;
 }
 
 footer {
@@ -85,14 +91,35 @@ footer {
 }
 
 .btn-sair {
-    background: #ccc;
+    background: #ddd;
     color: #333;
     width: 100%;
     margin-top: 10px;
+    padding: 14px;
+    font-size: 15px;
+    touch-action: manipulation
 }
 
 #infoPagamento {
-    margin-top: 10px;
-    font-weight: 500;
-    color: #444;
+    display: block;
+    margin-top: 12px;
+    padding: 10px;
+    background: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 22px;
+    }
+
+    .produto {
+        padding: 12px;
+    }
+
+    button {
+        font-size: 15px;
+    }
 }
