@@ -2,90 +2,65 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>W.E.P Doces</title>
+    <title>W&P Doces</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header>
-    <img src="logo.png" alt="Logo W.E.P Doces" class="logo">
+    <img src="logo.png" class="logo">
+    <h1>W&P Doces</h1>
 </header>
 
-<h1>🍬 Cardápio W.E.P Doces 🍫</h1>
-
 <div class="produto">
-    <h2>Balas de Coco (R$ 2,00 cada)</h2>
+    <h2>🍬 Balas de Coco (R$ 2,00)</h2>
 
-    <div class="sabor">
-        <label>Coco (Tradicional)</label>
-        <input type="number" min="0" id="coco">
-    </div>
-
-    <div class="sabor">
-        <label>Morango</label>
-        <input type="number" min="0" id="morango">
-    </div>
-
-    <div class="sabor">
-        <label>Limão</label>
-        <input type="number" min="0" id="limao">
-    </div>
-
-    <div class="sabor">
-        <label>Maracujá</label>
-        <input type="number" min="0" id="maracuja">
-    </div>
-
-    <div class="sabor">
-        <label>Caipirinha</label>
-        <input type="number" min="0" id="caipirinha">
-    </div>
-
-    <div class="sabor">
-        <label>Nutella</label>
-        <input type="number" min="0" id="nutella">
-    </div>
+    <div class="sabor"><label>Coco</label><input type="number" id="coco"></div>
+    <div class="sabor"><label>Morango</label><input type="number" id="morango"></div>
+    <div class="sabor"><label>Limão</label><input type="number" id="limao"></div>
+    <div class="sabor"><label>Maracujá</label><input type="number" id="maracuja"></div>
+    <div class="sabor"><label>Caipirinha</label><input type="number" id="caipirinha"></div>
+    <div class="sabor"><label>Nutella</label><input type="number" id="nutella"></div>
 </div>
 
 <div class="produto">
-    <h2>Brownie (R$ 6,00)</h2>
-    <input type="number" id="brownie" min="0">
+    <h2>🍫 Brownie (R$ 6,00)</h2>
+    <input type="number" id="brownie">
 </div>
 
 <div class="produto">
-    <h2>Palha Italiana (R$ 6,00)</h2>
-    <input type="number" id="palha" min="0">
+    <h2>🍰 Palha Italiana (R$ 6,00)</h2>
+    <input type="number" id="palha">
 </div>
 
-<button onclick="finalizarPedido()">Finalizar Pedido</button>
+<div class="produto">
+    <h2>👤 Dados do Cliente</h2>
+    <input type="text" id="nome" placeholder="Nome completo">
+    <input type="text" id="endereco" placeholder="Endereço completo">
+</div>
 
-<div class="resumo" id="resumo"></div>
+<button class="btn-finalizar" onclick="abrirPagamento()">🛒 Finalizar Compra</button>
 
-<script src="script.js"></script> 
-    <!-- Modal de Pagamento -->
+<!-- MODAL -->
 <div id="modalPagamento" class="modal">
     <div class="modal-content">
-        <h3>Forma de Pagamento</h3>
+        <h3>💳 Forma de Pagamento</h3>
 
-        <label>
-            <input type="radio" name="pagamento" value="PIX (21 976742777)">
-            PIX (21 976742777)
-        </label>
+        <label><input type="radio" name="pagamento" value="PIX (21 976742777)"> PIX</label>
+        <label><input type="radio" name="pagamento" value="Cartão de Crédito"> Cartão de Crédito</label>
+        <label><input type="radio" name="pagamento" value="Cartão de Débito"> Cartão de Débito</label>
 
-        <label>
-            <input type="radio" name="pagamento" value="Cartão de Crédito">
-            Cartão de Crédito
-        </label>
+        <input type="file" id="comprovante">
 
-        <label>
-            <input type="radio" name="pagamento" value="Cartão de Débito">
-            Cartão de Débito
-        </label>
-
-        <button onclick="confirmarPagamento()">Confirmar Pagamento</button>
+        <button class="btn-confirmar" onclick="confirmarPagamento()">✅ Confirmar Pagamento</button>
     </div>
 </div>
 
-<button onclick="abrirPagamento()">Finalizar e Enviar pelo WhatsApp</button>
+<footer>
+    © 2026 W&P Doces — Todos os direitos reservados
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
