@@ -17,40 +17,51 @@
 <div class="produto">
     <h2>🍬 Balas de Coco (R$ 2,00)</h2>
 
-    <div class="sabor">
-        <label>Coco</label>
-        <input type="number" id="coco" oninput="atualizarCarrinho()">
-    </div>
-    <div class="sabor">
-        <label>Morango</label>
-        <input type="number" id="morango" oninput="atualizarCarrinho()">
-    </div>
-    <div class="sabor">
-        <label>Limão</label>
-        <input type="number" id="limao" oninput="atualizarCarrinho()">
-    </div>
-    <div class="sabor">
-        <label>Maracujá</label>
-        <input type="number" id="maracuja" oninput="atualizarCarrinho()">
-    </div>
-    <div class="sabor">
-        <label>Caipirinha</label>
-        <input type="number" id="caipirinha" oninput="atualizarCarrinho()">
-    </div>
-    <div class="sabor">
-        <label>Nutella</label>
-        <input type="number" id="nutella" oninput="atualizarCarrinho()">
-    </div>
+  <div class="quantidade">
+    <button type="button" onclick="alterarQuantidade('coco', -1)">−</button>
+    <input type="number" id="coco" value="0" readonly>
+    <button type="button" onclick="alterarQuantidade('coco', 1)">+</button>
+</div>
+    <div class="quantidade">
+    <button type="button" onclick="alterarQuantidade('morango', -1)">−</button>
+    <input type="number" id="morango" value="0" readonly>
+    <button type="button" onclick="alterarQuantidade('morango', 1)">+</button>
+</div>
+    <div class="quantidade">
+    <button type="button" onclick="alterarQuantidade('limao', -1)">−</button>
+    <input type="number" id="limao" value="0" readonly>
+    <button type="button" onclick="alterarQuantidade('limao', 1)">+</button>
+</div>
+    <div class="quantidade">
+    <button type="button" onclick="alterarQuantidade('maracuja', -1)">−</button>
+    <input type="number" id="maracuja" value="0" readonly>
+    <button type="button" onclick="alterarQuantidade('maracuja', 1)">+</button>
+</div>
+    <div class="quantidade">
+    <button type="button" onclick="alterarQuantidade('caipirinha', -1)">−</button>
+    <input type="number" id="caipirinha" value="0" readonly>
+    <button type="button" onclick="alterarQuantidade('caipirinha', 1)">+</button>
+</div>
+    <div class="quantidade">
+    <button type="button" onclick="alterarQuantidade('nutella', -1)">−</button>
+    <input type="number" id="nutella" value="0" readonly>
+    <button type="button" onclick="alterarQuantidade('nutella', 1)">+</button>
+</div>
 </div>
 
-<div class="produto">
+<div class="quantidade">
     <h2>🍫 Brownie (R$ 6,00)</h2>
-    <input type="number" id="brownie" oninput="atualizarCarrinho()">
+    <button type="button" onclick="alterarQuantidade('brownie', -1)">−</button>
+    <input type="number" id="brownie" value="0" readonly>
+    <button type="button" onclick="alterarQuantidade('brownie', 1)">+</button>
 </div>
 
 <div class="produto">
     <h2>🍰 Palha Italiana (R$ 6,00)</h2>
-    <input type="number" id="palha" oninput="atualizarCarrinho()">
+    
+    <button type="button" onclick="alterarQuantidade('palha', -1)">−</button>
+    <input type="number" id="palha" value="0" readonly>
+    <button type="button" onclick="alterarQuantidade('palha', 1)">+</button>
 </div>
 
 <div class="produto carrinho">
