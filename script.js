@@ -1,5 +1,5 @@
 function abrirPagamento() {
-    document.getElementById("modalPagamento").style.display = "block";
+    document.getElementById("modalPagamento").style.display = "flex";
 }
 
 function fecharPagamento() {
@@ -7,15 +7,17 @@ function fecharPagamento() {
 }
 
 function mostrarPagamento() {
-    const pagamento = document.querySelector('input[name="pagamento"]:checked').value;
+    const pagamentoSelecionado = document.querySelector('input[name="pagamento"]:checked');
     const info = document.getElementById("infoPagamento");
     const comprovante = document.getElementById("comprovante");
 
-    if (pagamento === "PIX") {
-        info.innerText = "📲 Faça o PIX para 21 976742777";
+    if (!pagamentoSelecionado) return;
+
+    if (pagamentoSelecionado.value === "PIX") {
+        info.innerHTML = "📲 <strong>Faça o PIX para:</strong><br>21 976742777";
         comprovante.style.display = "block";
     } else {
-        info.innerText = "💵 Pagamento será feito no domicílio";
+        info.innerHTML = "💵 <strong>Pagamento será feito no domicílio</strong>";
         comprovante.style.display = "none";
     }
 }
