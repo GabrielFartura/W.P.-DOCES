@@ -37,27 +37,47 @@ function confirmarPagamento() {
     let resumo = `🍬 *Pedido W&P Doces*\n👤 ${nome}\n📍 ${endereco}\n\n`;
     let total = 0;
 
+    const precoBala = 2;
+const precoNutella = 3;
+const precoOutros = 6;
+
+function atualizarCarrinho() {
+    let totalBalas = 0;
+
     const sabores = [
-        ["Coco","coco"],["Morango","morango"],["Limão","limao"],
-        ["Maracujá","maracuja"],["Caipirinha","caipirinha"]
+        "coco", "morango", "limao",
+        "maracuja", "caipirinha"
     ];
 
-    const nutella = [ ["Nutella","nutella] ]
-
- if (nutell) {resumo += `nutella: ${nutella}\n`; total += nutella * 3; }
-    sabores.forEach(s => {
-        const q = parseInt(document.getElementById(s[1]).value) || 0;
-        if (q > 0) {
-            resumo += `Balas ${s[0]}: ${q}\n`;
-            total += q * 2;
-        }
+    sabores.forEach(id => {
+        const qtd = parseInt(document.getElementById(id).value) || 0;
+        totalBalas += qtd * precoBala;
     });
+
+    // Nutella separada
+    const qtdNutella = parseInt(document.getElementById("nutella").value) || 0;
+    totalBalas += qtdNutella * precoNutella;
 
     const brownie = parseInt(document.getElementById("brownie").value) || 0;
     const palha = parseInt(document.getElementById("palha").value) || 0;
 
-    if (brownie) { resumo += `Brownie: ${brownie}\n`; total += brownie * 6; }
-    if (palha) { resumo += `Palha Italiana: ${palha}\n`; total += palha * 6; }
+    const totalBrownie = brownie * precoOutros;
+    const totalPalha = palha * precoOutros;
+
+    const totalGeral = totalBalas + totalBrownie + totalPalha;
+
+    document.getElementById("resumoBalas").innerText =
+        `Balas: R$ ${totalBalas.toFixed(2)}`;
+
+    document.getElementById("resumoBrownie").innerText =
+        `Brownie: R$ ${totalBrownie.toFixed(2)}`;
+
+    document.getElementById("resumoPalha").innerText =
+        `Palha Italiana: R$ ${totalPalha.toFixed(2)}`;
+
+    document.getElementById("totalGeral").innerText =
+        `Total: R$ ${totalGeral.toFixed(2)}`;
+}
 
     resumo += `\n💳 Pagamento: ${pagamento}\n💰 Total: R$ ${total.toFixed(2)}`;
 
