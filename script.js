@@ -44,17 +44,21 @@ function atualizarCarrinho() {
   let total = 0;
 
   for (let id in produtos) {
-    const qtd = parseInt(document.getElementById(id)?.value) || 0;
+    const input = document.getElementById(id);
+    if (!input) continue;
+
+    const qtd = parseInt(input.value) || 0;
+
     if (qtd > 0) {
       const p = produtos[id];
       const sub = qtd * p.preco;
       total += sub;
-      html += `<p>${p.nome} (${qtd}x) — R$ ${sub.toFixed(2)}</p>`;
+      html += `${p.nome} (${qtd}x) — R$ ${sub.toFixed(2)}\n`;
     }
   }
 
-  document.getElementById("listaCarrinho").innerHTML =
-    html || "<em>Carrinho vazio</em>";
+  document.getElementById("listaCarrinho").innerText =
+    html || "Carrinho vazio";
 
   document.getElementById("total").innerText =
     `Total: R$ ${total.toFixed(2)}`;
