@@ -1,17 +1,16 @@
 /* ===============================
    PREÇOS
 ================================ */
-const precoBala = 2;
-const precoNutella = 3;
-const precoOutros = 6;
+const precoBala = 2.5;
+const precoNutella = 3.5;
 const precoBrownie = 9;
 const precoPalha = 9;
 const precoMaca = 5;
 const precoAmor = 10;
-
+const precoMiniBolo = 15;
 
 /* ===============================
-   MODAL DE PAGAMENTO
+   MODAL PAGAMENTO
 ================================ */
 function abrirPagamento() {
     document.getElementById("modalPagamento").style.display = "flex";
@@ -22,17 +21,17 @@ function fecharPagamento() {
 }
 
 function mostrarPagamento() {
-    const pagamentoSelecionado = document.querySelector('input[name="pagamento"]:checked');
+    const pagamento = document.querySelector('input[name="pagamento"]:checked');
     const info = document.getElementById("infoPagamento");
     const comprovante = document.getElementById("comprovante");
 
-    if (!pagamentoSelecionado) return;
+    if (!pagamento) return;
 
-    if (pagamentoSelecionado.value === "PIX") {
-        info.innerHTML = "📲 <strong>Faça o PIX para:</strong><br>21 976742777";
+    if (pagamento.value === "PIX") {
+        info.innerHTML = "📲 <strong>PIX:</strong><br>21 976742777";
         comprovante.style.display = "block";
     } else {
-        info.innerHTML = "💵 <strong>Pagamento será feito no domicílio</strong>";
+        info.innerHTML = "💵 <strong>Pagamento na entrega</strong>";
         comprovante.style.display = "none";
     }
 }
@@ -43,22 +42,23 @@ function mostrarPagamento() {
 function atualizarCarrinho() {
     let totalBalas = 0;
 
-    /* ===== BALAS ===== */
-    const saboresBalas = ["coco","morango","limao","maracuja","caipirinha"];
-    saboresBalas.forEach(id => {
-        const qtd = parseInt(document.getElementById(id)?.value) || 0;
-        totalBalas += qtd * precoBala;
+    /* ===== BALAS BAIANAS ===== */
+    const balas = [
+        "coco","maracuja","morango",
+        "pistache","limao","caipirinha"
+    ];
+
+    balas.forEach(id => {
+        totalBalas += (parseInt(document.getElementById(id)?.value) || 0) * precoBala;
     });
 
-    const qtdNutella = parseInt(document.getElementById("nutella")?.value) || 0;
-    totalBalas += qtdNutella * precoNutella;
+    const nutella = parseInt(document.getElementById("nutella")?.value) || 0;
+    totalBalas += nutella * precoNutella;
 
     /* ===== BROWNIES ===== */
     const brownies = [
-        "brownie_brigadeiro",
-        "brownie_ninho",
-        "brownie_doce",
-        "brownie_nutella"
+        "brownie_brigadeiro","brownie_ninho",
+        "brownie_doce","brownie_nutella"
     ];
 
     let totalBrownie = 0;
@@ -68,9 +68,7 @@ function atualizarCarrinho() {
 
     /* ===== PALHA ITALIANA ===== */
     const palhas = [
-        "palha_brigadeiro",
-        "palha_ninho",
-        "palha_oreo"
+        "palha_brigadeiro","palha_ninho","palha_oreo"
     ];
 
     let totalPalha = 0;
@@ -78,18 +76,29 @@ function atualizarCarrinho() {
         totalPalha += (parseInt(document.getElementById(id)?.value) || 0) * precoPalha;
     });
 
-    /* ===== MAÇÃ DO AMOR ===== */
+    /* ===== MINI BOLO VULCÃO ===== */
+    const miniBolos = [
+        "bolo_brigadeiro","bolo_ninho","bolo_dois_amores",
+        "bolo_ninho_morango","bolo_cenoura"
+    ];
+
+    let totalMiniBolo = 0;
+    miniBolos.forEach(id => {
+        totalMiniBolo += (parseInt(document.getElementById(id)?.value) || 0) * precoMiniBolo;
+    });
+
+    /* ===== OUTROS ===== */
     const totalMaca =
         (parseInt(document.getElementById("maca")?.value) || 0) * precoMaca;
 
-    /* ===== MORANGO / BOMBOM DO AMOR ===== */
     const totalAmor =
         ((parseInt(document.getElementById("morango_amor")?.value) || 0) +
          (parseInt(document.getElementById("bombom_amor")?.value) || 0)) * precoAmor;
 
     /* ===== TOTAL GERAL ===== */
     const totalGeral =
-        totalBalas + totalBrownie + totalPalha + totalMaca + totalAmor;
+        totalBalas + totalBrownie + totalPalha +
+        totalMiniBolo + totalMaca + totalAmor;
 
     /* ===== RESUMO ===== */
     document.getElementById("resumoBalas").innerText =
@@ -101,6 +110,9 @@ function atualizarCarrinho() {
     document.getElementById("resumoPalha").innerText =
         `Palha Italiana: R$ ${totalPalha.toFixed(2)}`;
 
+    document.getElementById("resumoBolo").innerText =
+        `Mini Bolo Vulcão: R$ ${totalMiniBolo.toFixed(2)}`;
+
     document.getElementById("totalGeral").innerText =
         `Total: R$ ${totalGeral.toFixed(2)}`;
 
@@ -108,7 +120,7 @@ function atualizarCarrinho() {
 }
 
 /* ===============================
-   CONTROLE DE QUANTIDADE
+   QUANTIDADE
 ================================ */
 function alterarQuantidade(id, valor) {
     const input = document.getElementById(id);
@@ -118,86 +130,64 @@ function alterarQuantidade(id, valor) {
     if (atual < 0) atual = 0;
 
     input.value = atual;
-    animarInput(input);
     atualizarCarrinho();
 }
 
 function validarInput(id) {
-    const input = document.getElementById(id);
+    let input = document.getElementById(id);
     let valor = parseInt(input.value);
-
     if (isNaN(valor) || valor < 0) valor = 0;
-
     input.value = valor;
     atualizarCarrinho();
 }
 
-function animarInput(input) {
-    input.style.transform = "scale(1.1)";
-    setTimeout(() => {
-        input.style.transform = "scale(1)";
-    }, 150);
-}
-
+/* ===============================
+   LIMPAR
+================================ */
 function limparCarrinho() {
-    const ids = [
-        "coco","morango","limao","maracuja","caipirinha","nutella",
-        "brownie_brigadeiro","brownie_ninho","brownie_doce","brownie_nutella",
-        "palha_brigadeiro","palha_ninho","palha_oreo",
-        "maca","morango_amor","bombom_amor"
-    ];
-
-    ids.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.value = 0;
-    });
-
+    const ids = document.querySelectorAll("input[type='number']");
+    ids.forEach(i => i.value = 0);
     atualizarCarrinho();
 }
 
 /* ===============================
-   CONFIRMAR PAGAMENTO
+   CONFIRMAR PEDIDO
 ================================ */
 function confirmarPagamento() {
     const nome = document.getElementById("nome").value.trim();
     const endereco = document.getElementById("endereco").value.trim();
-    const pagamentoSelecionado = document.querySelector('input[name="pagamento"]:checked');
+    const pagamento = document.querySelector('input[name="pagamento"]:checked');
 
-    if (!nome || !endereco || !pagamentoSelecionado) {
+    if (!nome || !endereco || !pagamento) {
         alert("Preencha todos os dados!");
         return;
     }
 
-    const pagamento = pagamentoSelecionado.value;
     const total = atualizarCarrinho();
-
     if (total === 0) {
         alert("Carrinho vazio!");
         return;
     }
 
     let resumo = `🍬 *Pedido W&P Doces*\n`;
-    resumo += `👤 ${nome}\n`;
-    resumo += `📍 ${endereco}\n\n`;
-    resumo += `💳 Pagamento: ${pagamento}\n`;
+    resumo += `👤 ${nome}\n📍 ${endereco}\n`;
+    resumo += `💳 Pagamento: ${pagamento.value}\n`;
     resumo += `💰 Total: R$ ${total.toFixed(2)}`;
 
-    // WhatsApp
-    const url = `https://wa.me/5521976742777?text=${encodeURIComponent(resumo)}`;
-    window.open(url, "_blank");
+    window.open(
+        `https://wa.me/5521976742777?text=${encodeURIComponent(resumo)}`,
+        "_blank"
+    );
 
-    // Planilha CSV
-    gerarCSV(nome, endereco, pagamento, total);
-
+    gerarCSV(nome, endereco, pagamento.value, total);
     fecharPagamento();
 }
 
 /* ===============================
-   GERAR PLANILHA CSV
+   CSV
 ================================ */
 function gerarCSV(nome, endereco, pagamento, total) {
     const data = new Date().toLocaleString("pt-BR");
-
     const csv = `Data,Nome,Endereço,Pagamento,Total
 "${data}","${nome}","${endereco}","${pagamento}","${total.toFixed(2)}"`;
 
