@@ -4,6 +4,11 @@
 const precoBala = 2;
 const precoNutella = 3;
 const precoOutros = 6;
+const precoBrownie = 9;
+const precoPalha = 9;
+const precoMaca = 5;
+const precoAmor = 10;
+
 
 /* ===============================
    MODAL DE PAGAMENTO
@@ -38,6 +43,33 @@ function mostrarPagamento() {
 function atualizarCarrinho() {
     let totalBalas = 0;
 
+   // Brownies
+const brownies = [
+    "brownie_brigadeiro","brownie_ninho","brownie_doce","brownie_nutella"
+];
+let totalBrownie = 0;
+brownies.forEach(id => {
+    totalBrownie += (parseInt(document.getElementById(id)?.value) || 0) * precoBrownie;
+});
+
+// Palhas
+const palhas = [
+    "palha_brigadeiro","palha_ninho","palha_oreo"
+];
+let totalPalha = 0;
+palhas.forEach(id => {
+    totalPalha += (parseInt(document.getElementById(id)?.value) || 0) * precoPalha;
+});
+
+// Maçã do amor
+const totalMaca = (parseInt(document.getElementById("maca")?.value) || 0) * precoMaca;
+
+// Do amor
+const totalAmor =
+    ((parseInt(document.getElementById("morango_amor")?.value) || 0) +
+     (parseInt(document.getElementById("bombom_amor")?.value) || 0)) * precoAmor;
+
+   
     const sabores = ["coco","morango","limao","maracuja","caipirinha"];
     sabores.forEach(id => {
         const qtd = parseInt(document.getElementById(id).value) || 0;
@@ -53,7 +85,8 @@ function atualizarCarrinho() {
     const totalBrownie = brownie * precoOutros;
     const totalPalha = palha * precoOutros;
 
-    const totalGeral = totalBalas + totalBrownie + totalPalha;
+    const totalGeral =
+    totalBalas + totalBrownie + totalPalha + totalMaca + totalAmor;
 
     document.getElementById("resumoBalas").innerText =
         `Balas: R$ ${totalBalas.toFixed(2)}`;
