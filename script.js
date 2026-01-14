@@ -40,78 +40,51 @@ function mostrarPagamento() {
    CARRINHO
 ================================ */
 function atualizarCarrinho() {
-    let totalBalas = 0;
+    let totalGeral = 0;
+    let lista = "";
+
+    function addItem(nome, qtd, preco) {
+        if (qtd > 0) {
+            const subtotal = qtd * preco;
+            lista += `• ${nome} (${qtd}x) — R$ ${subtotal.toFixed(2)}<br>`;
+            totalGeral += subtotal;
+        }
+    }
 
     /* ===== BALAS BAIANAS ===== */
-    const balas = [
-        "coco","maracuja","morango",
-        "pistache","limao","caipirinha"
-    ];
-
-    balas.forEach(id => {
-        totalBalas += (parseInt(document.getElementById(id)?.value) || 0) * precoBala;
-    });
-
-    const nutella = parseInt(document.getElementById("nutella")?.value) || 0;
-    totalBalas += nutella * precoNutella;
+    addItem("Bala de Coco", parseInt(coco.value)||0, precoBala);
+    addItem("Bala de Maracujá", parseInt(maracuja.value)||0, precoBala);
+    addItem("Bala de Morango", parseInt(morango.value)||0, precoBala);
+    addItem("Bala de Pistache", parseInt(pistache.value)||0, precoBala);
+    addItem("Bala de Limão", parseInt(limao.value)||0, precoBala);
+    addItem("Bala Caipirinha", parseInt(caipirinha.value)||0, precoBala);
+    addItem("Bala de Nutella", parseInt(nutella.value)||0, precoNutella);
 
     /* ===== BROWNIES ===== */
-    const brownies = [
-        "brownie_brigadeiro","brownie_ninho",
-        "brownie_doce","brownie_nutella"
-    ];
-
-    let totalBrownie = 0;
-    brownies.forEach(id => {
-        totalBrownie += (parseInt(document.getElementById(id)?.value) || 0) * precoBrownie;
-    });
+    addItem("Brownie Brigadeiro", parseInt(brownie_brigadeiro.value)||0, precoBrownie);
+    addItem("Brownie Ninho", parseInt(brownie_ninho.value)||0, precoBrownie);
+    addItem("Brownie Doce de Leite", parseInt(brownie_doce.value)||0, precoBrownie);
+    addItem("Brownie Nutella", parseInt(brownie_nutella.value)||0, precoBrownie);
 
     /* ===== PALHA ITALIANA ===== */
-    const palhas = [
-        "palha_brigadeiro","palha_ninho","palha_oreo"
-    ];
+    addItem("Palha Brigadeiro", parseInt(palha_brigadeiro.value)||0, precoPalha);
+    addItem("Palha Ninho", parseInt(palha_ninho.value)||0, precoPalha);
+    addItem("Palha Oreo", parseInt(palha_oreo.value)||0, precoPalha);
 
-    let totalPalha = 0;
-    palhas.forEach(id => {
-        totalPalha += (parseInt(document.getElementById(id)?.value) || 0) * precoPalha;
-    });
-
-    /* ===== MINI BOLO VULCÃO ===== */
-    const miniBolos = [
-        "bolo_brigadeiro","bolo_ninho","bolo_dois_amores",
-        "bolo_ninho_morango","bolo_cenoura"
-    ];
-
-    let totalMiniBolo = 0;
-    miniBolos.forEach(id => {
-        totalMiniBolo += (parseInt(document.getElementById(id)?.value) || 0) * precoMiniBolo;
-    });
+    /* ===== MINI BOLO ===== */
+    addItem("Mini Bolo Brigadeiro", parseInt(bolo_brigadeiro.value)||0, precoMiniBolo);
+    addItem("Mini Bolo Ninho", parseInt(bolo_ninho.value)||0, precoMiniBolo);
+    addItem("Mini Bolo Dois Amores", parseInt(bolo_dois_amores.value)||0, precoMiniBolo);
+    addItem("Mini Bolo Ninho c/ Morango", parseInt(bolo_ninho_morango.value)||0, precoMiniBolo);
+    addItem("Mini Bolo Cenoura", parseInt(bolo_cenoura.value)||0, precoMiniBolo);
 
     /* ===== OUTROS ===== */
-    const totalMaca =
-        (parseInt(document.getElementById("maca")?.value) || 0) * precoMaca;
+    addItem("Maçã do Amor", parseInt(maca.value)||0, precoMaca);
+    addItem("Morango do Amor", parseInt(morango_amor.value)||0, precoAmor);
+    addItem("Bombom do Amor", parseInt(bombom_amor.value)||0, precoAmor);
 
-    const totalAmor =
-        ((parseInt(document.getElementById("morango_amor")?.value) || 0) +
-         (parseInt(document.getElementById("bombom_amor")?.value) || 0)) * precoAmor;
-
-    /* ===== TOTAL GERAL ===== */
-    const totalGeral =
-        totalBalas + totalBrownie + totalPalha +
-        totalMiniBolo + totalMaca + totalAmor;
-
-    /* ===== RESUMO ===== */
-    document.getElementById("resumoBalas").innerText =
-        `Balas: R$ ${totalBalas.toFixed(2)}`;
-
-    document.getElementById("resumoBrownie").innerText =
-        `Brownies: R$ ${totalBrownie.toFixed(2)}`;
-
-    document.getElementById("resumoPalha").innerText =
-        `Palha Italiana: R$ ${totalPalha.toFixed(2)}`;
-
-    document.getElementById("resumoBolo").innerText =
-        `Mini Bolo Vulcão: R$ ${totalMiniBolo.toFixed(2)}`;
+    document.getElementById("listaCarrinho").innerHTML =
+        lista || "<em>Carrinho vazio</em>";
 
     document.getElementById("totalGeral").innerText =
         `Total: R$ ${totalGeral.toFixed(2)}`;
@@ -170,10 +143,12 @@ function confirmarPagamento() {
     }
 
     let resumo = `🍬 *Pedido W&P Doces*\n`;
-    resumo += `👤 ${nome}\n📍 ${endereco}\n`;
-    resumo += `💳 Pagamento: ${pagamento.value}\n`;
-    resumo += `💰 Total: R$ ${total.toFixed(2)}`;
+resumo += `👤 ${nome}\n📍 ${endereco}\n\n`;
+resumo += `🧾 Itens:\n${document.getElementById("listaCarrinho").innerText}\n\n`;
+resumo += `💳 Pagamento: ${pagamento.value}\n`;
+resumo += `💰 Total: R$ ${total.toFixed(2)}`;
 
+   
     window.open(
         `https://wa.me/5521976742777?text=${encodeURIComponent(resumo)}`,
         "_blank"
