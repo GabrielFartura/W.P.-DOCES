@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>W&P Doces</title>
+
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -13,7 +14,6 @@
 <header>
     <img src="IMG_6452-removebg-preview.png" class="logo">
     <h1>W&P Doces</h1>
-    <p class="bio-frase">🍬 Doces artesanais • Peça pelo WhatsApp</p>
 </header>
 
 <!-- ================= BALAS ================= -->
@@ -22,43 +22,43 @@
 
 <div class="quantidade">Coco
 <button onclick="alterar('bala_coco',-1)">−</button>
-<input id="bala_coco" type="number" value="0" min="0">
+<input id="bala_coco" type="number" value="0" inputmode="numeric">
 <button onclick="alterar('bala_coco',1)">+</button>
 </div>
 
 <div class="quantidade">Maracujá
 <button onclick="alterar('bala_maracuja',-1)">−</button>
-<input id="bala_maracuja" type="number" value="0" min="0">
+<input id="bala_maracuja" type="number" value="0" inputmode="numeric">
 <button onclick="alterar('bala_maracuja',1)">+</button>
 </div>
 
 <div class="quantidade">Morango
 <button onclick="alterar('bala_morango',-1)">−</button>
-<input id="bala_morango" type="number" value="0" min="0">
+<input id="bala_morango" type="number" value="0" inputmode="numeric">
 <button onclick="alterar('bala_morango',1)">+</button>
 </div>
 
 <div class="quantidade">Pistache
 <button onclick="alterar('bala_pistache',-1)">−</button>
-<input id="bala_pistache" type="number" value="0" min="0">
+<input id="bala_pistache" type="number" value="0" inputmode="numeric">
 <button onclick="alterar('bala_pistache',1)">+</button>
 </div>
 
 <div class="quantidade">Limão
 <button onclick="alterar('bala_limao',-1)">−</button>
-<input id="bala_limao" type="number" value="0" min="0">
+<input id="bala_limao" type="number" value="0" inputmode="numeric">
 <button onclick="alterar('bala_limao',1)">+</button>
 </div>
 
 <div class="quantidade">Caipirinha
 <button onclick="alterar('bala_caipirinha',-1)">−</button>
-<input id="bala_caipirinha" type="number" value="0" min="0">
+<input id="bala_caipirinha" type="number" value="0" inputmode="numeric">
 <button onclick="alterar('bala_caipirinha',1)">+</button>
 </div>
 
 <div class="quantidade">Nutella
 <button onclick="alterar('bala_nutella',-1)">−</button>
-<input id="bala_nutella" type="number" value="0" min="0">
+<input id="bala_nutella" type="number" value="0" inputmode="numeric">
 <button onclick="alterar('bala_nutella',1)">+</button>
 </div>
 </div>
@@ -69,31 +69,31 @@
 
 <div class="quantidade">Brigadeiro
 <button onclick="alterar('bolo_brigadeiro',-1)">−</button>
-<input id="bolo_brigadeiro" type="number" value="0" min="0">
+<input id="bolo_brigadeiro" type="number" value="0">
 <button onclick="alterar('bolo_brigadeiro',1)">+</button>
 </div>
 
 <div class="quantidade">Ninho
 <button onclick="alterar('bolo_ninho',-1)">−</button>
-<input id="bolo_ninho" type="number" value="0" min="0">
+<input id="bolo_ninho" type="number" value="0">
 <button onclick="alterar('bolo_ninho',1)">+</button>
 </div>
 
 <div class="quantidade">Dois Amores
 <button onclick="alterar('bolo_dois_amores',-1)">−</button>
-<input id="bolo_dois_amores" type="number" value="0" min="0">
+<input id="bolo_dois_amores" type="number" value="0">
 <button onclick="alterar('bolo_dois_amores',1)">+</button>
 </div>
 
 <div class="quantidade">Ninho c/ Morango
 <button onclick="alterar('bolo_ninho_morango',-1)">−</button>
-<input id="bolo_ninho_morango" type="number" value="0" min="0">
+<input id="bolo_ninho_morango" type="number" value="0">
 <button onclick="alterar('bolo_ninho_morango',1)">+</button>
 </div>
 
 <div class="quantidade">Cenoura c/ Chocolate
 <button onclick="alterar('bolo_cenoura',-1)">−</button>
-<input id="bolo_cenoura" type="number" value="0" min="0">
+<input id="bolo_cenoura" type="number" value="0">
 <button onclick="alterar('bolo_cenoura',1)">+</button>
 </div>
 </div>
@@ -127,7 +127,7 @@
 </div>
 </div>
 
-<!-- ================= PALHA ================= -->
+<!-- ================= PALHA ITALIANA ================= -->
 <div class="produto">
 <h2>🍪 Palha Italiana (R$ 9)</h2>
 
@@ -154,19 +154,19 @@
 <div class="produto">
 <h2>❤️ Do Amor</h2>
 
-<div class="quantidade">Maçã do Amor (R$5)
+<div class="quantidade">Maçã do Amor (R$ 5)
 <button onclick="alterar('maca',-1)">−</button>
 <input id="maca" type="number" value="0">
 <button onclick="alterar('maca',1)">+</button>
 </div>
 
-<div class="quantidade">Morango do Amor (R$10)
+<div class="quantidade">Morango do Amor (R$ 10)
 <button onclick="alterar('morango_amor',-1)">−</button>
 <input id="morango_amor" type="number" value="0">
 <button onclick="alterar('morango_amor',1)">+</button>
 </div>
 
-<div class="quantidade">Bombom do Amor (R$10)
+<div class="quantidade">Bombom do Amor (R$ 10)
 <button onclick="alterar('bombom_amor',-1)">−</button>
 <input id="bombom_amor" type="number" value="0">
 <button onclick="alterar('bombom_amor',1)">+</button>
@@ -176,8 +176,10 @@
 <!-- ================= CARRINHO ================= -->
 <div class="produto carrinho">
 <h2>🛒 Carrinho</h2>
-<div id="listaCarrinho">Carrinho vazio</div>
+
+<div id="listaCarrinho"><em>Carrinho vazio</em></div>
 <h3 id="total">Total: R$ 0,00</h3>
+
 <button class="btn-limpar" onclick="limpar()">🗑️ Limpar Carrinho</button>
 </div>
 
