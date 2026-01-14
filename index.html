@@ -49,21 +49,112 @@
 </div>
 </div>
 
-<div class="produto" class="quantidade">
-    <h2>🍫 Brownie (R$ 6,00)</h2>
-    <button type="button" onclick="alterarQuantidade('brownie', -1)">−</button>
-    <input type="number" id="brownie" value="0" min="0" oninput="validarInput('brownie')">
-    <button type="button" onclick="alterarQuantidade('brownie', 1)">+</button>
+<div class="produto">
+    <h2>Brownie (R$ 9)</h2>
+
+    <div class="sabor">
+        <span>Brigadeiro🍫</span>
+        <div class="quantidade">
+            <button onclick="alterarQuantidade('brownie_brigadeiro', -1)">−</button>
+            <input type="number" id="brownie_brigadeiro" value="0" min="0" oninput="validarInput('brownie_brigadeiro')">
+            <button onclick="alterarQuantidade('brownie_brigadeiro', 1)">+</button>
+        </div>
+    </div>
+
+    <div class="sabor">
+        <span>Ninho</span>
+        <div class="quantidade">
+            <button onclick="alterarQuantidade('brownie_ninho', -1)">−</button>
+            <input type="number" id="brownie_ninho" value="0" min="0" oninput="validarInput('brownie_ninho')">
+            <button onclick="alterarQuantidade('brownie_ninho', 1)">+</button>
+        </div>
+    </div>
+
+    <div class="sabor">
+        <span>Doce de Leite</span>
+        <div class="quantidade">
+            <button onclick="alterarQuantidade('brownie_doce', -1)">−</button>
+            <input type="number" id="brownie_doce" value="0" min="0" oninput="validarInput('brownie_doce')">
+            <button onclick="alterarQuantidade('brownie_doce', 1)">+</button>
+        </div>
+    </div>
+
+    <div class="sabor">
+        <span>Nutella</span>
+        <div class="quantidade">
+            <button onclick="alterarQuantidade('brownie_nutella', -1)">−</button>
+            <input type="number" id="brownie_nutella" value="0" min="0" oninput="validarInput('brownie_nutella')">
+            <button onclick="alterarQuantidade('brownie_nutella', 1)">+</button>
+        </div>
+    </div>
 </div>
 
-<div class="produto" class="quantidade">
-    <h2>🍰 Palha Italiana (R$ 6,00)</h2>
+<div class="produto">
+    <h2>Palha Italiana (R$ 9)</h2>
+
+    <div class="sabor">
+        <span>Brigadeiro🍫</span>
+        <div class="quantidade">
+            <button onclick="alterarQuantidade('palha_brigadeiro', -1)">−</button>
+            <input type="number" id="palha_brigadeiro" value="0" min="0" oninput="validarInput('palha_brigadeiro')">
+            <button onclick="alterarQuantidade('palha_brigadeiro', 1)">+</button>
+        </div>
+    </div>
+
+    <div class="sabor">
+        <span>Ninho</span>
+        <div class="quantidade">
+            <button onclick="alterarQuantidade('palha_ninho', -1)">−</button>
+            <input type="number" id="palha_ninho" value="0" min="0" oninput="validarInput('palha_ninho')">
+            <button onclick="alterarQuantidade('palha_ninho', 1)">+</button>
+        </div>
+    </div>
+
+    <div class="sabor">
+        <span>Oreo</span>
+        <div class="quantidade">
+            <button onclick="alterarQuantidade('palha_oreo', -1)">−</button>
+            <input type="number" id="palha_oreo" value="0" min="0" oninput="validarInput('palha_oreo')">
+            <button onclick="alterarQuantidade('palha_oreo', 1)">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="produto">
+    <h2>Maçã do Amor 🍎(R$ 5)</h2>
+
+    <div class="quantidade">
+        <button onclick="alterarQuantidade('maca', -1)">−</button>
+        <input type="number" id="maca" value="0" min="0" oninput="validarInput('maca')">
+        <button onclick="alterarQuantidade('maca', 1)">+</button>
+    </div>
+</div>
+
+<div class="produto">
+    <h2>Do Amor🍓🍬 (R$ 10)</h2>
+
+    <div class="sabor">
+        <span>Morango do Amor🍓</span>
+        <div class="quantidade">
+            <button onclick="alterarQuantidade('morango_amor', -1)">−</button>
+            <input type="number" id="morango_amor" value="0" min="0" oninput="validarInput('morango_amor')">
+            <button onclick="alterarQuantidade('morango_amor', 1)">+</button>
+        </div>
+    </div>
+
+    <div class="sabor">
+        <span>Bombom do Amor🍬</span>
+        <div class="quantidade">
+            <button onclick="alterarQuantidade('bombom_amor', -1)">−</button>
+            <input type="number" id="bombom_amor" value="0" min="0" oninput="validarInput('bombom_amor')">
+            <button onclick="alterarQuantidade('bombom_amor', 1)">+</button>
+        </div>
+    </div>
+</div>
+
+
+
     
-    <button type="button" onclick="alterarQuantidade('palha', -1)">−</button>
-    <input type="number" id="palha" value="0" min="0" oninput="validarInput('palha')">
-    <button type="button" onclick="alterarQuantidade('palha', 1)">+</button>
-</div>
-
 <div class="produto carrinho">
     <h2>🛒 Carrinho</h2>
 
