@@ -43,56 +43,60 @@ function mostrarPagamento() {
 function atualizarCarrinho() {
     let totalBalas = 0;
 
-   // Brownies
-const brownies = [
-    "brownie_brigadeiro","brownie_ninho","brownie_doce","brownie_nutella"
-];
-let totalBrownie = 0;
-brownies.forEach(id => {
-    totalBrownie += (parseInt(document.getElementById(id)?.value) || 0) * precoBrownie;
-});
-
-// Palhas
-const palhas = [
-    "palha_brigadeiro","palha_ninho","palha_oreo"
-];
-let totalPalha = 0;
-palhas.forEach(id => {
-    totalPalha += (parseInt(document.getElementById(id)?.value) || 0) * precoPalha;
-});
-
-// Maçã do amor
-const totalMaca = (parseInt(document.getElementById("maca")?.value) || 0) * precoMaca;
-
-// Do amor
-const totalAmor =
-    ((parseInt(document.getElementById("morango_amor")?.value) || 0) +
-     (parseInt(document.getElementById("bombom_amor")?.value) || 0)) * precoAmor;
-
-   
-    const sabores = ["coco","morango","limao","maracuja","caipirinha"];
-    sabores.forEach(id => {
-        const qtd = parseInt(document.getElementById(id).value) || 0;
+    /* ===== BALAS ===== */
+    const saboresBalas = ["coco","morango","limao","maracuja","caipirinha"];
+    saboresBalas.forEach(id => {
+        const qtd = parseInt(document.getElementById(id)?.value) || 0;
         totalBalas += qtd * precoBala;
     });
 
-    const qtdNutella = parseInt(document.getElementById("nutella").value) || 0;
+    const qtdNutella = parseInt(document.getElementById("nutella")?.value) || 0;
     totalBalas += qtdNutella * precoNutella;
 
-    const brownie = parseInt(document.getElementById("brownie").value) || 0;
-    const palha = parseInt(document.getElementById("palha").value) || 0;
+    /* ===== BROWNIES ===== */
+    const brownies = [
+        "brownie_brigadeiro",
+        "brownie_ninho",
+        "brownie_doce",
+        "brownie_nutella"
+    ];
 
-    const totalBrownie = brownie * precoOutros;
-    const totalPalha = palha * precoOutros;
+    let totalBrownie = 0;
+    brownies.forEach(id => {
+        totalBrownie += (parseInt(document.getElementById(id)?.value) || 0) * precoBrownie;
+    });
 
+    /* ===== PALHA ITALIANA ===== */
+    const palhas = [
+        "palha_brigadeiro",
+        "palha_ninho",
+        "palha_oreo"
+    ];
+
+    let totalPalha = 0;
+    palhas.forEach(id => {
+        totalPalha += (parseInt(document.getElementById(id)?.value) || 0) * precoPalha;
+    });
+
+    /* ===== MAÇÃ DO AMOR ===== */
+    const totalMaca =
+        (parseInt(document.getElementById("maca")?.value) || 0) * precoMaca;
+
+    /* ===== MORANGO / BOMBOM DO AMOR ===== */
+    const totalAmor =
+        ((parseInt(document.getElementById("morango_amor")?.value) || 0) +
+         (parseInt(document.getElementById("bombom_amor")?.value) || 0)) * precoAmor;
+
+    /* ===== TOTAL GERAL ===== */
     const totalGeral =
-    totalBalas + totalBrownie + totalPalha + totalMaca + totalAmor;
+        totalBalas + totalBrownie + totalPalha + totalMaca + totalAmor;
 
+    /* ===== RESUMO ===== */
     document.getElementById("resumoBalas").innerText =
         `Balas: R$ ${totalBalas.toFixed(2)}`;
 
     document.getElementById("resumoBrownie").innerText =
-        `Brownie: R$ ${totalBrownie.toFixed(2)}`;
+        `Brownies: R$ ${totalBrownie.toFixed(2)}`;
 
     document.getElementById("resumoPalha").innerText =
         `Palha Italiana: R$ ${totalPalha.toFixed(2)}`;
@@ -138,7 +142,9 @@ function animarInput(input) {
 function limparCarrinho() {
     const ids = [
         "coco","morango","limao","maracuja","caipirinha","nutella",
-        "brownie","palha"
+        "brownie_brigadeiro","brownie_ninho","brownie_doce","brownie_nutella",
+        "palha_brigadeiro","palha_ninho","palha_oreo",
+        "maca","morango_amor","bombom_amor"
     ];
 
     ids.forEach(id => {
