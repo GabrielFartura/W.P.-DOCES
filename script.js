@@ -39,9 +39,12 @@ function confirmarPagamento() {
 
     const sabores = [
         ["Coco","coco"],["Morango","morango"],["Limão","limao"],
-        ["Maracujá","maracuja"],["Caipirinha","caipirinha"],["Nutella","nutella"]
+        ["Maracujá","maracuja"],["Caipirinha","caipirinha"]
     ];
 
+    const nutella = [ ["Nutella","nutella] ]
+
+ if (nutell) {resumo += `nutella: ${nutella}\n`; total += nutella * 3; }
     sabores.forEach(s => {
         const q = parseInt(document.getElementById(s[1]).value) || 0;
         if (q > 0) {
