@@ -1,213 +1,141 @@
+/* ===============================
+   RESET & BASE
+================================ */
 * {
     box-sizing: border-box;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: #fff5f8;
     margin: 0;
     padding: 16px;
+    font-family: 'Poppins', sans-serif;
+    background: #fff5f8;
+    color: #333;
 }
 
+/* ===============================
+   HEADER / LOGO
+================================ */
 header {
     text-align: center;
+    padding: 10px 0;
 }
 
 .logo {
-    max-width: 220px;
     width: 100%;
+    max-width: 220px;
     margin-bottom: 10px;
 }
 
 h1 {
     color: #d63384;
+    margin-bottom: 10px;
 }
 
+/* ===============================
+   SEÇÕES / CARDS
+================================ */
 .produto {
-    background: #fff;
-    padding: 15px;
-    border-radius: 15px;
-    margin-bottom: 15px;
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 16px;
+    margin-bottom: 16px;
 }
 
+/* ===============================
+   SABORES / LINHAS
+================================ */
 .sabor {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    margin: 6px 0;
+    gap: 10px;
+    margin: 8px 0;
 }
 
+/* ===============================
+   INPUTS
+================================ */
 input {
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
     width: 100%;
+    padding: 12px;
+    font-size: 16px; /* evita zoom no iOS */
+    border-radius: 12px;
+    border: 1px solid #ccc;
 }
 
 .sabor input {
     width: 80px;
+    text-align: center;
 }
 
+/* ===============================
+   BOTÕES GERAIS
+================================ */
 button {
-    border-radius: 30px;
     border: none;
+    border-radius: 30px;
     padding: 14px;
     font-size: 16px;
     cursor: pointer;
-}
-
-.btn-finalizar {
-    background: linear-gradient(45deg, #ff5fa2, #d63384);
-    color: white;
-    width: 100%;
-    margin-top: 20px;
-}
-
-.btn-confirmar {
-    background: #28a745;
-    color: white;
-    width: 100%;
-    margin-top: 15px;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.6);
-    z-index: 9999;
-}
-
-.modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    max-width: 340px;
-    width: 90%;
-    margin: auto;
-    margin-top: 20vh;
-    position: relative;
-}
-
-footer {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 14px;
-    color: #777;
-}
-
-.btn-sair {
-    background: #ddd;
-    color: #333;
-    width: 100%;
-    margin-top: 10px;
-    padding: 14px;
-    font-size: 15px;
-    touch-action: manipulation
-}
-
-#infoPagamento {
-    display: block;
-    margin-top: 12px;
-    padding: 10px;
-    background: #f8f8f8;
-    border-radius: 10px;
-    font-size: 14px;
-    color: #333;
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 22px;
-    }
-
-    .produto {
-        padding: 12px;
-    }
-
-    button {
-        font-size: 15px;
-    }
-}
-
-/* ===== MOBILE FIRST ===== */
-@media (max-width: 600px) {
-
-    header {
-        padding: 10px 0;
-    }
-
-    .logo {
-        max-width: 200px;
-    }
-
-    h1 {
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
-
-    h2 {
-        font-size: 18px;
-    }
-
-    .produto {
-        padding: 16px;
-        margin-bottom: 16px;
-    }
-
-    input {
-        font-size: 16px; /* evita zoom automático */
-        padding: 14px;
-    }
-
-    .sabor {
-        gap: 10px;
-    }
-
-    .sabor input {
-        width: 100px;
-        font-size: 16px;
-    }
-
-    button {
-        font-size: 17px;
-        padding: 16px;
-    }
-
-    .modal-content {
-        width: 92%;
-        margin-top: 15vh;
-    }
-
-    footer {
-        font-size: 13px;
-        padding: 10px 0;
-    }
-}
-
-button {
     box-shadow: 0 8px 20px rgba(214, 51, 132, 0.25);
 }
 
+/* ===============================
+   BOTÕES PRINCIPAIS
+================================ */
+.btn-finalizar {
+    width: 100%;
+    margin-top: 20px;
+    color: #fff;
+    background: linear-gradient(45deg, #ff5fa2, #d63384);
+}
+
+.btn-confirmar {
+    width: 100%;
+    margin-top: 15px;
+    background: #28a745;
+    color: #fff;
+}
+
+.btn-sair {
+    width: 100%;
+    margin-top: 10px;
+    background: #ddd;
+    color: #333;
+    font-size: 15px;
+    touch-action: manipulation;
+}
+
+/* ===============================
+   CARRINHO
+================================ */
 .carrinho {
     background: #fff0f6;
     border: 2px solid #ffd6e8;
 }
 
-.carrinho p, .carrinho h3 {
+.carrinho p,
+.carrinho h3 {
     font-size: 16px;
 }
 
+/* ===============================
+   BOTÃO LIMPAR
+================================ */
 .btn-limpar {
-    background: #eee;
-    color: #333;
     width: 100%;
     margin-top: 12px;
     padding: 14px;
+    background: #eee;
+    color: #333;
     border-radius: 25px;
     font-size: 15px;
 }
 
-
+/* ===============================
+   QUANTIDADE (+ / −)
+================================ */
 .quantidade {
     display: flex;
     align-items: center;
@@ -220,28 +148,101 @@ button {
     width: 46px;
     height: 46px;
     border-radius: 50%;
-    border: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     font-size: 26px;
     font-weight: bold;
-    background: #d63384;
-    color: #fff;
-    cursor: pointer;
+
+    background: #d63384 !important;
+    color: #fff !important;
+
     user-select: none;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+
     transition: transform 0.15s ease, background 0.2s ease;
 }
 
 .quantidade button:active {
     transform: scale(0.9);
-    background: #b52a6f;
+    background: #b52a6f !important;
 }
 
 .quantidade input {
     width: 64px;
+    padding: 10px;
     text-align: center;
     font-size: 16px;
-    padding: 10px;
     border-radius: 12px;
     border: 1px solid #ccc;
+}
+
+/* ===============================
+   MODAL
+================================ */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    width: 92%;
+    max-width: 340px;
+    margin: 15vh auto 0;
+    position: relative;
+}
+
+#infoPagamento {
+    display: block;
+    margin-top: 12px;
+    padding: 10px;
+    background: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+}
+
+/* ===============================
+   RESPONSIVO (MOBILE FIRST)
+================================ */
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    .logo {
+        max-width: 200px;
+    }
+
+    button {
+        font-size: 17px;
+        padding: 16px;
+    }
+
+    footer {
+        font-size: 13px;
+    }
 }
